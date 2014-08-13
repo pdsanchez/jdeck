@@ -179,6 +179,21 @@ public class Card {
         }
     }
     
+    public static Suit getSuite(String abbr) {
+        switch (abbr) {
+            case "S":
+                return Suit.SPADES;
+            case "H":
+                return Suit.HEARTS;
+            case "C":
+                return Suit.CLUBS;
+            case "D":
+                return Suit.DIAMONDS;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
     public static void setLocale(String language, String country) {
         i18n = ResourceBundle.getBundle("org.pdsanchez.deck.i18n.MessagesBundle", 
                 new Locale(language, country));
@@ -214,7 +229,7 @@ public class Card {
     public String toString() {
         String v = i18n.getString(value.getName());
         String s = i18n.getString(suit.getName());
-        return v + " - " + s;
+        return v + "-" + s;
     }
 
     public static void main(String[] args) {
